@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NadaafadPro | Nidaamka Maareynta Dharka</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">✦</span><div><strong>NadaafadPro</strong><small>NIDAAMKA MAAREYNTA DHARKA</small></div></div>
+    <p class="nav-label">SHAQADA</p>
+    <button class="nav-item active" data-view="dashboard"><span>▦</span> Bogga Guud</button>
+    <button class="nav-item" data-view="orders"><span>▤</span> Dalabaadka</button>
+    <button class="nav-item" data-view="new-order"><span>＋</span> Dalab Cusub</button>
+    <div class="sidebar-bottom"><div class="help-icon">?</div><div><strong>Ma u baahan tahay caawimaad?</strong><small>Si fudud u maamul adeeggaaga.</small></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">NIDAAMKA MAAREYNTA DHARKA</p><h1 id="page-title">Bogga Guud</h1></div>
+      <div class="top-actions"><span class="today" id="today"></span><button class="primary-btn" id="top-new-order">＋ Dalab cusub</button></div>
+    </header>
+
+    <section id="dashboard-view" class="view">
+      <div class="welcome"><div><p class="eyebrow light">GUUDMAR GANACSIGAAGA</p><h2>Maalin wanaagsan, shaqada si habsami leh u bilow.</h2><p>Hal meel ka maamul dalabaadka macaamiisha, adeegyada iyo lacagaha.</p></div><div class="welcome-art">🧺</div></div>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-top"><span>Wadarta dalabaadka</span><span class="stat-icon blue">▤</span></div><strong id="total-orders">0</strong><small>Dhammaan dalabaadka la diiwaangeliyey</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Shaqadu socoto</span><span class="stat-icon orange">◷</span></div><strong id="progress-orders">0</strong><small>Dalabaadka la shaqaynayo</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Diyaar in la qaato</span><span class="stat-icon green">✓</span></div><strong id="ready-orders">0</strong><small>Dalabaadka diyaar ah</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Lacagta la helay</span><span class="stat-icon purple">$</span></div><strong id="revenue">$0.00</strong><small>Lacagta dalabaadka la bixiyey</small></article>
+      </div>
+      <section class="panel">
+        <div class="panel-heading"><div><h3>Dalabaadkii ugu dambeeyey</h3><p>Dalabaadka macaamiisha ee ugu dambeeyey</p></div><button class="text-btn" id="view-all">Eeg dhammaan →</button></div>
+        <div class="table-wrap"><table><thead><tr><th>LAMBARKA DALABKA</th><th>MACMIILKA</th><th>ADEEGGA</th><th>TAARIIKHDA DHAMMAADKA</th><th>XAAALADDA</th><th>QIIMAHA</th></tr></thead><tbody id="recent-orders"></tbody></table></div>
+        <div class="empty-state" id="recent-empty"><span>🧺</span><strong>Weli dalab ma jiro</strong><p>Ku dar dalabkaaga ugu horreeya si aad u bilowdo.</p><button class="primary-btn" id="empty-new-order">＋ Samee dalab</button></div>
+      </section>
+    </section>
+
+    <section id="orders-view" class="view hidden">
+      <section class="panel">
+        <div class="panel-heading orders-heading"><div><h3>Dhammaan dalabaadka</h3><p>Raadi dalabaad, waxna ka beddel xaaladdooda.</p></div><button class="primary-btn" id="orders-new">＋ Dalab cusub</button></div>
+        <div class="toolbar"><input type="search" id="search-orders" placeholder="Raadi macmiil, telefoon ama lambarka dalabka..." /><select id="status-filter"><option value="">Dhammaan xaaladaha</option><option>La helay</option><option>La dhaqayo</option><option>La qalajinayo</option><option>Diyaar</option><option>La wareejiyey</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>LAMBARKA DALABKA</th><th>MACMIILKA</th><th>TELEFOONKA</th><th>ADEEGGA</th><th>TAARIIKHDA</th><th>XAAALADDA</th><th>LACAG-BIXINTA</th><th>QIIMAHA</th><th>FALAL</th></tr></thead><tbody id="orders-table"></tbody></table></div>
+        <div class="empty-state hidden" id="orders-empty"><span>🔎</span><strong>Wax dalab ah lama helin</strong><p>Bedel erayga raadinta ama samee dalab cusub.</p></div>
+      </section>
+    </section>
+
+    <section id="new-order-view" class="view hidden">
+      <section class="panel form-panel">
+        <div class="panel-heading"><div><h3>Diiwaangeli dalab dhar</h3><p>Geli xogta macmiilka iyo faahfaahinta adeegga.</p></div><span class="form-badge">DALAB CUSUB</span></div>
+        <form id="order-form">
+          <div class="form-section-title">Xogta macmiilka</div>
+          <div class="form-grid">
+            <label>Magaca macmiilka *<input id="customer-name" required maxlength="80" placeholder="Tusaale: Aamina Xasan" /></label>
+            <label>Lambarka telefoonka *<input id="customer-phone" required type="tel" maxlength="30" placeholder="Tusaale: +252 90 1234567" /></label>
+          </div>
+          <div class="form-section-title">Faahfaahinta dalabka</div>
+          <div class="form-grid">
+            <label>Nooca adeegga *
+              <select id="service-type" required><option value="">Dooro adeeg</option><option>Dhaqid iyo laabid</option><option>Nadiifin qalalan</option><option>Kadisayn</option><option>Nadiifinta bustayaasha</option><option>Dhaqid degdeg ah</option></select>
+            </label>
+            <label>Tirada dharka *<input id="item-count" required type="number" min="1" max="1000" value="1" /></label>
+            <label>Taariikhda la dhammeeyo *<input id="due-date" required type="date" /></label>
+            <label>Qiimaha ($) *<input id="amount" required type="number" min="0" step="0.01" placeholder="0.00" /></label>
+            <label>Xaaladda dalabka<select id="order-status"><option>La helay</option><option>La dhaqayo</option><option>La qalajinayo</option><option>Diyaar</option><option>La wareejiyey</option></select></label>
+            <label>Xaaladda lacag-bixinta<select id="payment-status"><option>Lama bixin</option><option>La bixiyey</option><option>Qayb ayaa la bixiyey</option></select></label>
+          </div>
+          <label class="full-label">Faallo (ikhtiyaari)<textarea id="notes" rows="3" maxlength="300" placeholder="Qoraal dheeraad ah ama tilmaamo gaar ah..."></textarea></label>
+          <div class="form-footer"><p>* Meelaha khasabka ah</p><div><button type="button" class="secondary-btn" id="cancel-form">Ka noqo</button><button type="submit" class="primary-btn">Kaydi dalabka <span>→</span></button></div></div>
+        </form>
+      </section>
+    </section>
+    <footer>© <span id="year"></span> NadaafadPro · Nidaam fudud oo lagu maamulo ganacsiga dharka</footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
